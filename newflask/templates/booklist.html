@@ -1,0 +1,32 @@
+{% extends "home.html" %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% block content %}
+    <div class="container-fluid">
+        <table border="1px solid black">
+            <tr>
+                <th>Title</th>
+                <th>Author</th>
+                <th>PDF</th>
+            </tr>
+            {% for row in rows %}
+            <tr>
+                <td>{{row['name']}}</td>
+                <td>{{row['author']}}</td>
+                <td><a href="{{url_for('uploaded_file',f=row['pdf'])}}">link</a></td>
+                <td><img src="{{url_for('uploaded_file',f=row['pdf'])}}" width="250px" height="250px"></td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+    <a href='/'>Go back to home page</a>
+    {% endblock %}
+</body>
+</html>
